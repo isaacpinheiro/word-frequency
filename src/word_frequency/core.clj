@@ -1,7 +1,6 @@
 (ns word-frequency.core
-    (:gen-class)
-    (require [word-frequency.parser :as parser]))
+    (require [word-frequency.parser :as parser])
+    (:gen-class))
 
 (defn -main [& args]
     (println "Hello, World!"))
-
