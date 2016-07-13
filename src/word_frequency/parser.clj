@@ -48,5 +48,20 @@
     res)
 
 (defn transform [wordGroup]
-    wordGroup)
+    (def res
+        (reduce
+            (fn [acc x]
+
+                (def f
+                    (loop [i 0 v (wordGroup :wordList)]
+                        (cond
+                            (= v []) i
+                            (= x (first v)) (recur (+ i 1) (rest v))
+                            :else (recur i (rest v)))))
+
+                (conj acc (struct WordFrequency x f)))
+
+            [] (wordGroup :words)))
+
+    res)
 
