@@ -26,8 +26,27 @@
 
     res)
 
+(defn exist [vec item]
+    (loop [v vec]
+        (cond
+            (= v []) false
+            (= (first v) item) true
+            :else (recur (rest v)))))
+
 (defn group [vec]
-    nil)
+
+    (def words
+        (reduce
+            (fn [acc x]
+                (if (= (exist acc x) false)
+                    (conj acc x)
+                    acc))
+            [] vec))
+
+    (def res (struct WordGroup words vec))
+
+    res)
 
 (defn transform [wordGroup]
-    nil)
+    wordGroup)
+
